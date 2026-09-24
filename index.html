@@ -1,0 +1,2139 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NetLearn XI - Informatika</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f7ff;
+    color: #20243a;
+    line-height: 1.7;
+}
+
+/* HEADER */
+header {
+    background: linear-gradient(135deg, #5b5ff0, #8b5cf6);
+    color: white;
+    text-align: center;
+    padding: 45px 20px;
+}
+
+header h1 {
+    font-size: 42px;
+}
+
+header p {
+    margin-top: 8px;
+}
+
+/* NAVBAR */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+
+    background: white;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    padding: 12px;
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+nav button {
+    border: none;
+    background: #eef0ff;
+    color: #4338ca;
+
+    padding: 10px 15px;
+    border-radius: 10px;
+
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+nav button:hover {
+    background: #5b5ff0;
+    color: white;
+}
+
+/* CONTAINER */
+.container {
+    width: 92%;
+    max-width: 1100px;
+    margin: 30px auto;
+}
+
+.section {
+    display: none;
+    animation: fade 0.3s ease;
+}
+
+.section.active {
+    display: block;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* CARD */
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+
+    margin-bottom: 20px;
+
+    box-shadow:
+        0 8px 25px rgba(50,60,120,0.08);
+}
+
+.card h2 {
+    color: #5146d8;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    color: #3730a3;
+    margin-top: 18px;
+    margin-bottom: 8px;
+}
+
+.card p {
+    margin: 8px 0;
+}
+
+ul,
+ol {
+    padding-left: 25px;
+}
+
+/* HOME */
+.grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 18px;
+}
+
+.topic {
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 25px rgba(50,60,120,0.08);
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+.topic:hover {
+    transform: translateY(-5px);
+}
+
+.icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+/* INFO */
+.note {
+    background: #fff7ed;
+
+    border-left:
+        5px solid #f97316;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    margin: 15px 0;
+}
+
+.good {
+    background: #ecfdf5;
+
+    border-left:
+        5px solid #16a34a;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    margin: 15px 0;
+}
+
+/* DIAGRAM */
+.diagram {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 20px;
+
+    background: #eef0ff;
+
+    border-radius: 15px;
+
+    margin: 15px 0;
+}
+
+.node {
+    background: white;
+
+    border:
+        2px solid #818cf8;
+
+    padding: 10px 15px;
+
+    border-radius: 12px;
+
+    font-weight: bold;
+}
+
+.arrow {
+    color: #4f46e5;
+    font-size: 25px;
+}
+
+/* OSI / TCP-IP */
+.layer {
+    display: grid;
+
+    grid-template-columns:
+        70px 180px 1fr;
+
+    border:
+        1px solid #e5e7eb;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    margin: 8px 0;
+}
+
+.layer div {
+    padding: 12px;
+    background: white;
+}
+
+.layer .number {
+    background: #5b5ff0;
+    color: white;
+
+    text-align: center;
+
+    font-weight: bold;
+}
+
+/* TABLE */
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+
+    padding: 12px;
+
+    text-align: left;
+}
+
+th {
+    background: #eef0ff;
+    color: #3730a3;
+}
+
+/* QUIZ */
+.quiz {
+    border:
+        1px solid #e5e7eb;
+
+    border-radius: 15px;
+
+    padding: 18px;
+
+    margin: 15px 0;
+}
+
+.option {
+    display: block;
+
+    width: 100%;
+
+    text-align: left;
+
+    background: white;
+
+    border:
+        1px solid #ddd;
+
+    padding: 12px;
+
+    margin: 8px 0;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+.option:hover {
+    border-color: #6366f1;
+}
+
+.option.correct {
+    background: #dcfce7;
+    border-color: #22c55e;
+}
+
+.option.wrong {
+    background: #fee2e2;
+    border-color: #ef4444;
+}
+
+#score {
+    font-size: 22px;
+
+    color: #4f46e5;
+
+    font-weight: bold;
+
+    margin-top: 20px;
+}
+
+.btn {
+    border: none;
+
+    background: #5b5ff0;
+
+    color: white;
+
+    padding: 12px 20px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+/* FOOTER */
+footer {
+    background: #111827;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 25px;
+
+    margin-top: 40px;
+}
+
+/* DARK MODE */
+body.dark {
+    background: #111827;
+    color: #e5e7eb;
+}
+
+body.dark nav,
+body.dark .card,
+body.dark .topic,
+body.dark .option,
+body.dark .layer div {
+    background: #1f2937;
+    color: #e5e7eb;
+}
+
+body.dark .diagram {
+    background: #312e5f;
+}
+
+body.dark .node {
+    background: #273244;
+}
+
+body.dark th {
+    background: #312e5f;
+    color: #ddd6fe;
+}
+
+body.dark td {
+    border-color: #374151;
+}
+
+/* MOBILE */
+@media(max-width: 650px) {
+
+    header h1 {
+        font-size: 30px;
+    }
+
+    nav {
+        justify-content: flex-start;
+
+        overflow-x: auto;
+
+        flex-wrap: nowrap;
+    }
+
+    .card {
+        padding: 18px;
+    }
+
+    .layer {
+        grid-template-columns:
+            55px 1fr;
+    }
+
+    .layer div:last-child {
+        grid-column: 1 / -1;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>🌐 NetLearn XI</h1>
+
+<p>
+Website Belajar Informatika
+</p>
+
+<p>
+Topologi Jaringan & Mekanisme Pengiriman Data
+</p>
+
+</header>
+
+
+<nav>
+
+<button onclick="showSection('home')">
+🏠 Beranda
+</button>
+
+<button onclick="showSection('topologi')">
+🔗 Topologi
+</button>
+
+<button onclick="showSection('pemilihan')">
+🧭 Pemilihan
+</button>
+
+<button onclick="showSection('osi')">
+🧩 Model OSI
+</button>
+
+<button onclick="showSection('tcpip')">
+🌐 TCP/IP
+</button>
+
+<button onclick="showSection('protokol')">
+📡 Protokol
+</button>
+
+<button onclick="showSection('quiz')">
+📝 Kuis
+</button>
+
+<button onclick="darkMode()">
+🌙
+</button>
+
+</nav>
+
+
+<main class="container">
+
+
+<!-- BERANDA -->
+
+<section id="home" class="section active">
+
+<div class="card">
+
+<h2>
+📚 Bab 3 Informatika
+</h2>
+
+<p>
+Pelajari bagaimana perangkat jaringan saling terhubung,
+bagaimana data dikirim, serta bagaimana model OSI dan
+TCP/IP menjelaskan proses komunikasi jaringan.
+</p>
+
+</div>
+
+
+<div class="grid">
+
+<div
+class="topic"
+onclick="showSection('topologi')"
+>
+
+<div class="icon">
+🔗
+</div>
+
+<h3>
+Topologi Jaringan
+</h3>
+
+<p>
+Bus, Ring, Dual-Ring, Star,
+Mesh, Hybrid, dan Tree.
+</p>
+
+</div>
+
+
+<div
+class="topic"
+onclick="showSection('osi')"
+>
+
+<div class="icon">
+🧩
+</div>
+
+<h3>
+Model OSI
+</h3>
+
+<p>
+Pelajari 7 layer OSI.
+</p>
+
+</div>
+
+
+<div
+class="topic"
+onclick="showSection('tcpip')"
+>
+
+<div class="icon">
+🌐
+</div>
+
+<h3>
+Model TCP/IP
+</h3>
+
+<p>
+Pelajari 4 layer TCP/IP.
+</p>
+
+</div>
+
+
+<div
+class="topic"
+onclick="showSection('protokol')"
+>
+
+<div class="icon">
+📡
+</div>
+
+<h3>
+Protokol Jaringan
+</h3>
+
+<p>
+TCP, UDP, IP, ARP,
+ICMP dan lainnya.
+</p>
+
+</div>
+
+
+<div
+class="topic"
+onclick="showSection('quiz')"
+>
+
+<div class="icon">
+📝
+</div>
+
+<h3>
+Kuis
+</h3>
+
+<p>
+Uji kemampuanmu.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- TOPOLOGI -->
+
+<section id="topologi" class="section">
+
+<div class="card">
+
+<h2>
+🔗 Topologi Jaringan
+</h2>
+
+<p>
+Topologi jaringan adalah konfigurasi fisik maupun logis
+yang menggambarkan bagaimana perangkat atau node
+dalam jaringan saling terhubung.
+</p>
+
+<h3>
+Topologi Fisik
+</h3>
+
+<p>
+Menggambarkan struktur fisik jaringan seperti kabel,
+perangkat jaringan, dan koneksi.
+</p>
+
+<h3>
+Topologi Logika
+</h3>
+
+<p>
+Menggambarkan bagaimana data atau sinyal mengalir
+antarperangkat.
+</p>
+
+</div>
+
+
+<!-- BUS -->
+
+<div class="card">
+
+<h2>
+1. Topologi Bus
+</h2>
+
+<p>
+Semua komputer terhubung pada satu kabel utama
+yang disebut backbone.
+</p>
+
+<div class="diagram">
+
+<span class="node">PC 1</span>
+
+<span class="arrow">↔</span>
+
+<span class="node">PC 2</span>
+
+<span class="arrow">↔</span>
+
+<span class="node">PC 3</span>
+
+<span class="arrow">↔</span>
+
+<span class="node">PC 4</span>
+
+</div>
+
+<h3>
+Kelebihan
+</h3>
+
+<ul>
+
+<li>Penggunaan kabel relatif sedikit.</li>
+
+<li>Biaya relatif efektif.</li>
+
+<li>Cocok untuk jaringan kecil.</li>
+
+<li>Penambahan perangkat relatif mudah.</li>
+
+</ul>
+
+<h3>
+Kekurangan
+</h3>
+
+<ul>
+
+<li>Kurang cocok untuk jaringan besar.</li>
+
+<li>Gangguan backbone dapat mengganggu jaringan.</li>
+
+<li>Kinerja dapat menurun jika node bertambah.</li>
+
+</ul>
+
+</div>
+
+
+<!-- RING -->
+
+<div class="card">
+
+<h2>
+2. Topologi Ring
+</h2>
+
+<p>
+Setiap perangkat terhubung membentuk lingkaran.
+Data diteruskan dari satu node ke node berikutnya.
+</p>
+
+<div class="diagram">
+
+<span class="node">A</span>
+
+<span class="arrow">→</span>
+
+<span class="node">B</span>
+
+<span class="arrow">→</span>
+
+<span class="node">C</span>
+
+<span class="arrow">→</span>
+
+<span class="node">D</span>
+
+<span class="arrow">↩</span>
+
+</div>
+
+<h3>
+Kelebihan
+</h3>
+
+<ul>
+
+<li>Aliran data teratur.</li>
+
+<li>Tidak membutuhkan node pusat.</li>
+
+<li>Instalasi relatif mudah.</li>
+
+</ul>
+
+<h3>
+Kekurangan
+</h3>
+
+<ul>
+
+<li>Kerusakan kabel dapat mengganggu jaringan.</li>
+
+<li>Delay dapat meningkat ketika jumlah node bertambah.</li>
+
+</ul>
+
+</div>
+
+
+<!-- DUAL RING -->
+
+<div class="card">
+
+<h2>
+3. Topologi Dual-Ring
+</h2>
+
+<p>
+Pengembangan dari ring yang menggunakan dua jalur
+lingkaran untuk meningkatkan keandalan jaringan.
+</p>
+
+<h3>
+Kelebihan
+</h3>
+
+<ul>
+
+<li>Memiliki jalur alternatif.</li>
+
+<li>Keandalan dapat lebih baik.</li>
+
+<li>Aliran data lebih teratur.</li>
+
+</ul>
+
+<h3>
+Kekurangan
+</h3>
+
+<ul>
+
+<li>Konfigurasi lebih kompleks.</li>
+
+<li>Biaya dapat lebih tinggi.</li>
+
+</ul>
+
+</div>
+
+
+<!-- STAR -->
+
+<div class="card">
+
+<h2>
+4. Topologi Star
+</h2>
+
+<p>
+Setiap perangkat terhubung langsung ke perangkat
+pusat seperti switch atau hub.
+</p>
+
+<div class="diagram">
+
+<span class="node">PC 1</span>
+
+<span class="arrow">↘</span>
+
+<span class="node">
+🔵 SWITCH
+</span>
+
+<span class="arrow">↙</span>
+
+<span class="node">PC 2</span>
+
+<span class="node">PC 3</span>
+
+<span class="arrow">↗</span>
+
+<span class="node">PC 4</span>
+
+</div>
+
+<h3>
+Kelebihan
+</h3>
+
+<ul>
+
+<li>Mudah dikembangkan.</li>
+
+<li>Mudah melakukan troubleshooting.</li>
+
+<li>Kerusakan satu kabel tidak langsung memutus node lain.</li>
+
+<li>Penambahan perangkat relatif mudah.</li>
+
+</ul>
+
+<h3>
+Kekurangan
+</h3>
+
+<ul>
+
+<li>Membutuhkan kabel lebih banyak.</li>
+
+<li>Membutuhkan perangkat pusat.</li>
+
+<li>Jika perangkat pusat gagal, jaringan dapat terganggu.</li>
+
+</ul>
+
+</div>
+
+
+<!-- MESH -->
+
+<div class="card">
+
+<h2>
+5. Topologi Mesh
+</h2>
+
+<p>
+Setiap node memiliki koneksi langsung dengan node lain.
+Pada mesh penuh, setiap perangkat terhubung dengan
+semua perangkat lainnya.
+</p>
+
+<h3>
+Routing
+</h3>
+
+<p>
+Data dapat menentukan jalur tertentu menuju tujuan
+dan menghindari jalur yang mengalami masalah.
+</p>
+
+<h3>
+Flooding
+</h3>
+
+<p>
+Data diteruskan ke banyak atau semua node.
+Metode ini dapat meningkatkan kemungkinan data mencapai
+tujuan tetapi juga meningkatkan beban jaringan.
+</p>
+
+<h3>
+Kelebihan
+</h3>
+
+<ul>
+
+<li>Banyak jalur alternatif.</li>
+
+<li>Keandalan tinggi.</li>
+
+<li>Gangguan satu jalur tidak selalu menghentikan komunikasi.</li>
+
+</ul>
+
+<h3>
+Kekurangan
+</h3>
+
+<ul>
+
+<li>Membutuhkan banyak kabel.</li>
+
+<li>Biaya tinggi.</li>
+
+<li>Konfigurasi kompleks.</li>
+
+</ul>
+
+</div>
+
+
+<!-- HYBRID -->
+
+<div class="card">
+
+<h2>
+6. Topologi Hybrid
+</h2>
+
+<p>
+Topologi hybrid merupakan gabungan dua atau lebih
+jenis topologi.
+</p>
+
+<h3>
+Kelebihan
+</h3>
+
+<ul>
+
+<li>Fleksibel.</li>
+
+<li>Dapat disesuaikan dengan kebutuhan.</li>
+
+<li>Dapat dikembangkan.</li>
+
+</ul>
+
+<h3>
+Kekurangan
+</h3>
+
+<ul>
+
+<li>Konfigurasi lebih kompleks.</li>
+
+<li>Biaya dapat lebih mahal.</li>
+
+</ul>
+
+</div>
+
+
+<!-- TREE -->
+
+<div class="card">
+
+<h2>
+7. Topologi Tree
+</h2>
+
+<p>
+Topologi tree menggunakan struktur hierarki seperti
+pohon dan menggabungkan karakteristik star dan bus.
+</p>
+
+<div class="diagram">
+
+<span class="node">
+ROOT
+</span>
+
+<span class="arrow">
+↓
+</span>
+
+<span class="node">
+CABANG
+</span>
+
+<span class="arrow">
+↓
+</span>
+
+<span class="node">
+NODE
+</span>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PEMILIHAN -->
+
+<section id="pemilihan" class="section">
+
+<div class="card">
+
+<h2>
+🧭 Pemilihan Topologi
+</h2>
+
+<p>
+Pemilihan topologi harus disesuaikan dengan kebutuhan
+jaringan.
+</p>
+
+<h3>
+Hal yang harus dipertimbangkan
+</h3>
+
+<ol>
+
+<li>Panjang kabel.</li>
+
+<li>Jenis kabel.</li>
+
+<li>Biaya.</li>
+
+<li>Jumlah perangkat.</li>
+
+<li>Kemampuan jaringan berkembang.</li>
+
+<li>Kemudahan pemeliharaan.</li>
+
+</ol>
+
+</div>
+
+
+<div class="card">
+
+<h2>
+🧵 Media Jaringan
+</h2>
+
+<div class="table-container">
+
+<table>
+
+<tr>
+
+<th>
+Media
+</th>
+
+<th>
+Keterangan
+</th>
+
+</tr>
+
+
+<tr>
+
+<td>
+Kabel Koaksial
+</td>
+
+<td>
+Media transmisi yang digunakan pada jaringan tertentu.
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+UTP
+</td>
+
+<td>
+Media kabel yang banyak digunakan pada jaringan lokal.
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+Serat Optik
+</td>
+
+<td>
+Mampu membawa data dengan kecepatan tinggi dan jarak jauh.
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- OSI -->
+
+<section id="osi" class="section">
+
+<div class="card">
+
+<h2>
+🧩 Model OSI
+</h2>
+
+<p>
+OSI atau Open Systems Interconnection merupakan
+model referensi yang membagi proses komunikasi jaringan
+menjadi tujuh layer.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="layer">
+
+<div class="number">7</div>
+
+<div>
+<b>Application</b>
+</div>
+
+<div>
+Menyediakan layanan jaringan yang berhubungan
+dengan aplikasi pengguna.
+</div>
+
+</div>
+
+
+<div class="layer">
+
+<div class="number">6</div>
+
+<div>
+<b>Presentation</b>
+</div>
+
+<div>
+Mengatur format data, enkripsi,
+dekripsi dan kompresi.
+</div>
+
+</div>
+
+
+<div class="layer">
+
+<div class="number">5</div>
+
+<div>
+<b>Session</b>
+</div>
+
+<div>
+Membangun, mengelola dan mengakhiri sesi komunikasi.
+</div>
+
+</div>
+
+
+<div class="layer">
+
+<div class="number">4</div>
+
+<div>
+<b>Transport</b>
+</div>
+
+<div>
+Mengatur komunikasi end-to-end,
+segmentasi, flow control dan error control.
+</div>
+
+</div>
+
+
+<div class="layer">
+
+<div class="number">3</div>
+
+<div>
+<b>Network</b>
+</div>
+
+<div>
+Mengatur alamat logis dan routing paket.
+</div>
+
+</div>
+
+
+<div class="layer">
+
+<div class="number">2</div>
+
+<div>
+<b>Data Link</b>
+</div>
+
+<div>
+Mengatur frame, MAC address dan komunikasi
+antarperangkat yang terhubung langsung.
+</div>
+
+</div>
+
+
+<div class="layer">
+
+<div class="number">1</div>
+
+<div>
+<b>Physical</b>
+</div>
+
+<div>
+Mengirimkan bit melalui media fisik.
+</div>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>
+🔄 Encapsulation
+</h2>
+
+<p>
+Saat data bergerak dari layer atas ke layer bawah,
+informasi tambahan ditambahkan sesuai fungsi layer.
+</p>
+
+<div class="diagram">
+
+<span class="node">
+DATA
+</span>
+
+<span class="arrow">→</span>
+
+<span class="node">
+SEGMENT
+</span>
+
+<span class="arrow">→</span>
+
+<span class="node">
+PACKET
+</span>
+
+<span class="arrow">→</span>
+
+<span class="node">
+FRAME
+</span>
+
+<span class="arrow">→</span>
+
+<span class="node">
+BITS
+</span>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- TCP IP -->
+
+<section id="tcpip" class="section">
+
+<div class="card">
+
+<h2>
+🌐 Model TCP/IP
+</h2>
+
+<p>
+Model TCP/IP digunakan sebagai model protokol jaringan
+yang menjadi dasar komunikasi Internet.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="layer">
+
+<div class="number">
+4
+</div>
+
+<div>
+<b>Application</b>
+</div>
+
+<div>
+HTTP, HTTPS, FTP, SMTP, POP3, SNMP.
+</div>
+
+</div>
+
+
+<div class="layer">
+
+<div class="number">
+3
+</div>
+
+<div>
+<b>Transport</b>
+</div>
+
+<div>
+TCP, UDP dan SCTP.
+</div>
+
+</div>
+
+
+<div class="layer">
+
+<div class="number">
+2
+</div>
+
+<div>
+<b>Internet</b>
+</div>
+
+<div>
+IP, ARP dan ICMP.
+</div>
+
+</div>
+
+
+<div class="layer">
+
+<div class="number">
+1
+</div>
+
+<div>
+<b>Network Access</b>
+</div>
+
+<div>
+Mengatur akses terhadap media jaringan.
+</div>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>
+Perbandingan OSI dan TCP/IP
+</h2>
+
+<div class="table-container">
+
+<table>
+
+<tr>
+
+<th>
+OSI
+</th>
+
+<th>
+TCP/IP
+</th>
+
+</tr>
+
+
+<tr>
+
+<td>
+Application
+</td>
+
+<td rowspan="3">
+Application
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+Presentation
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+Session
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+Transport
+</td>
+
+<td>
+Transport
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+Network
+</td>
+
+<td>
+Internet
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+Data Link + Physical
+</td>
+
+<td>
+Network Access
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PROTOKOL -->
+
+<section id="protokol" class="section">
+
+<div class="card">
+
+<h2>
+📡 Protokol Transport
+</h2>
+
+
+<h3>
+TCP
+</h3>
+
+<p>
+TCP atau Transmission Control Protocol adalah protokol
+connection-oriented. TCP menggunakan nomor urut dan
+acknowledgement untuk membantu memastikan data diterima
+dengan benar dan dapat dikirim ulang jika diperlukan.
+</p>
+
+
+<h3>
+UDP
+</h3>
+
+<p>
+UDP atau User Datagram Protocol merupakan protokol
+connectionless. UDP lebih sederhana karena tidak melakukan
+proses pembentukan koneksi seperti TCP.
+</p>
+
+
+<h3>
+SCTP
+</h3>
+
+<p>
+SCTP atau Stream Control Transmission Protocol mendukung
+komunikasi dengan beberapa stream data dan memiliki
+mekanisme yang berbeda dari TCP maupun UDP.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h2>
+🔌 Connection-Oriented vs Connectionless
+</h2>
+
+<div class="table-container">
+
+<table>
+
+<tr>
+
+<th>
+Aspek
+</th>
+
+<th>
+Connection-Oriented
+</th>
+
+<th>
+Connectionless
+</th>
+
+</tr>
+
+
+<tr>
+
+<td>
+Koneksi
+</td>
+
+<td>
+Membangun koneksi terlebih dahulu.
+</td>
+
+<td>
+Tidak perlu membangun koneksi terlebih dahulu.
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+Keandalan
+</td>
+
+<td>
+Dapat menggunakan acknowledgement dan retransmission.
+</td>
+
+<td>
+Tidak menyediakan mekanisme keandalan seperti TCP.
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+Contoh
+</td>
+
+<td>
+TCP
+</td>
+
+<td>
+UDP
+</td>
+
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>
+🌍 Internet Layer
+</h2>
+
+
+<h3>
+IP
+</h3>
+
+<p>
+Internet Protocol digunakan untuk pengalamatan logis
+dan pengiriman paket antarjaringan.
+</p>
+
+
+<h3>
+ARP
+</h3>
+
+<p>
+Address Resolution Protocol digunakan untuk mengetahui
+alamat MAC berdasarkan alamat IP yang diketahui.
+</p>
+
+
+<h3>
+ICMP
+</h3>
+
+<p>
+Internet Control Message Protocol digunakan untuk
+pesan kontrol dan informasi mengenai kondisi jaringan.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h2>
+🧰 Application Layer
+</h2>
+
+<ul>
+
+<li>
+<b>HTTP / HTTPS</b> → komunikasi web.
+</li>
+
+<li>
+<b>FTP</b> → transfer file.
+</li>
+
+<li>
+<b>POP3</b> → pengambilan email.
+</li>
+
+<li>
+<b>SMTP</b> → pengiriman email.
+</li>
+
+<li>
+<b>SNMP</b> → pengelolaan perangkat jaringan.
+</li>
+
+</ul>
+
+</div>
+
+</section>
+
+
+<!-- QUIZ -->
+
+<section id="quiz" class="section">
+
+<div class="card">
+
+<h2>
+📝 Kuis Informatika
+</h2>
+
+<p>
+Jawab semua pertanyaan.
+</p>
+
+
+<div id="quizContainer">
+</div>
+
+
+<p id="score">
+Skor: 0 / 10
+</p>
+
+
+<button
+class="btn"
+onclick="location.reload()"
+>
+
+🔄 Ulangi Kuis
+
+</button>
+
+</div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+<p>
+© 2026 NetLearn XI
+</p>
+
+<p>
+Belajar Informatika
+</p>
+
+</footer>
+
+
+<script>
+
+function showSection(id) {
+
+    const sections =
+        document.querySelectorAll(".section");
+
+    sections.forEach(section => {
+
+        section.classList.remove("active");
+
+    });
+
+    document
+        .getElementById(id)
+        .classList.add("active");
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+}
+
+
+function darkMode() {
+
+    document.body
+        .classList
+        .toggle("dark");
+
+}
+
+
+/* =========================
+   QUIZ
+========================= */
+
+const questions = [
+
+{
+
+question:
+"Topologi yang menggunakan satu kabel utama disebut...",
+
+options:
+[
+"Star",
+"Bus",
+"Mesh",
+"Ring"
+],
+
+answer: 1
+
+},
+
+{
+
+question:
+"Pada topologi star, semua perangkat terhubung ke...",
+
+options:
+[
+"Backbone",
+"Node pusat",
+"Router internet",
+"Server luar"
+],
+
+answer: 1
+
+},
+
+{
+
+question:
+"Topologi berbentuk lingkaran adalah...",
+
+options:
+[
+"Ring",
+"Tree",
+"Star",
+"Hybrid"
+],
+
+answer: 0
+
+},
+
+{
+
+question:
+"Gabungan dua atau lebih topologi disebut...",
+
+options:
+[
+"Mesh",
+"Hybrid",
+"Ring",
+"Bus"
+],
+
+answer: 1
+
+},
+
+{
+
+question:
+"Model OSI memiliki berapa layer?",
+
+options:
+[
+"4",
+"5",
+"6",
+"7"
+],
+
+answer: 3
+
+},
+
+{
+
+question:
+"Layer OSI yang menangani MAC address adalah...",
+  
+options:
+[
+"ICMP",
+"SMTP",
+"ARP",
+"FTP"
+],
+
+answer: 2
+
+},
+
+{
+
+question:
+"Model TCP/IP yang digunakan dalam materi memiliki...",
+
+options:
+[
+"3 layer",
+"4 layer",
+"5 layer",
+"7 layer"
+],
+
+answer: 1
+
+},
+
+{
+
+question:
+"Protokol yang digunakan untuk komunikasi web adalah...",
+
+options:
+[
+"HTTP/HTTPS",
+"ARP",
+"ICMP",
+"SCTP"
+],
+
+answer: 0
+
+}
+
+];
+
+
+let score = 0;
+
+let answered = 0;
+
+
+const quizContainer =
+    document.getElementById(
+        "quizContainer"
+    );
+
+
+questions.forEach(
+    (q, index) => {
+
+        const box =
+            document.createElement(
+                "div"
+            );
+
+        box.className = "quiz";
+
+
+        const title =
+            document.createElement(
+                "p"
+            );
+
+        title.innerHTML =
+            "<b>" +
+            (index + 1) +
+            ". " +
+            q.question +
+            "</b>";
+
+
+        box.appendChild(title);
+
+
+        q.options.forEach(
+            (option, optionIndex) => {
+
+                const button =
+                    document.createElement(
+                        "button"
+                    );
+
+                button.className =
+                    "option";
+
+                button.textContent =
+                    String.fromCharCode(
+                        65 + optionIndex
+                    ) +
+                    ". " +
+                    option;
+
+
+                button.onclick =
+                    function () {
+
+                        if (
+                            box.dataset.done
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        box.dataset.done =
+                            "true";
+
+
+                        const allOptions =
+                            box.querySelectorAll(
+                                ".option"
+                            );
+
+
+                        allOptions.forEach(
+                            (item, i) => {
+
+                                item.disabled =
+                                    true;
+
+
+                                if (
+                                    i ===
+                                    q.answer
+                                ) {
+
+                                    item.classList
+                                        .add(
+                                            "correct"
+                                        );
+
+                                }
+
+                            }
+                        );
+
+
+                        if (
+                            optionIndex ===
+                            q.answer
+                        ) {
+
+                            score++;
+
+                        } else {
+
+                            button.classList
+                                .add(
+                                    "wrong"
+                                );
+
+                        }
+
+
+                        answered++;
+
+
+                        document
+                            .getElementById(
+                                "score"
+                            )
+                            .textContent =
+                            "Skor: " +
+                            score +
+                            " / " +
+                            questions.length;
+
+
+                        if (
+                            answered ===
+                            questions.length
+                        ) {
+
+                            setTimeout(
+                                function () {
+
+                                    alert(
+                                        "Kuis selesai!\n\n" +
+                                        "Skor kamu: " +
+                                        score +
+                                        " / " +
+                                        questions.length
+                                    );
+
+                                },
+                                300
+                            );
+
+                        }
+
+                    };
+
+
+                box.appendChild(
+                    button
+                );
+
+            }
+        );
+
+
+        quizContainer.appendChild(
+            box
+        );
+
+    }
+);
+
+</script>
+
+</body>
+</html>
